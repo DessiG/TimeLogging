@@ -1,1 +1,1 @@
-# TimeLogging
+# TimeTrackingApp
