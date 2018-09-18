@@ -119,6 +119,11 @@
     <Compile Include="tbl_Users.cs">
       <DependentUpon>TimeTrackingEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="TimeTrackingDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TimeTrackingDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="TimeTrackingEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -133,6 +138,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TimeTrackingEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="UserRegistration.xaml.cs">
+      <DependentUpon>UserRegistration.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\EmployeeViewModel.cs" />
     <Page Include="LoginWindow.xaml">
@@ -149,6 +157,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Register.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserRegistration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -172,7 +184,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\TimeTrackingApp.Model.Employee.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -181,6 +192,17 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>TimeTrackingEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="TimeTrackingDataSet.xsc">
+      <DependentUpon>TimeTrackingDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TimeTrackingDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TimeTrackingDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TimeTrackingDataSet.xss">
+      <DependentUpon>TimeTrackingDataSet.xsd</DependentUpon>
+    </None>
     <None Include="TimeTrackingEntities.edmx.diagram">
       <DependentUpon>TimeTrackingEntities.edmx</DependentUpon>
     </None>
@@ -194,13 +216,6 @@
     <Content Include="DB\AddTimeTrackingDBScript.sql" />
     <Content Include="DB\CreateUserDB.sql" />
     <Resource Include="DB\DB_diagram.PNG" />
-    <Content Include="DB\TimeTracking.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DB\TimeTracking_log.ldf">
-      <DependentUpon>TimeTracking.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="TimeTrackingEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TimeTrackingEntities.edmx</DependentUpon>
@@ -226,6 +241,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,13 +1,9 @@
 USE [master]
 GO
 /****** Object:  Database [TimeTracking]    Script Date: 9/17/2018 4:46:03 PM ******/
-CREATE DATABASE [TimeTracking]
- CONTAINMENT = NONE
- ON  PRIMARY 
-( NAME = N'TimeTracking', FILENAME = N'D:\projects\TimeLogging\TimeTrackingApp\DB\TimeTracking.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
- LOG ON 
-( NAME = N'TimeTracking_log', FILENAME = N'D:\projects\TimeLogging\TimeTrackingApp\DB\TimeTracking_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+CREATE DATABASE [TimeTracking] 
 GO
+
 ALTER DATABASE [TimeTracking] SET COMPATIBILITY_LEVEL = 100
 GO
 IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))

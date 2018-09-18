@@ -10,14 +10,14 @@
 namespace TimeTrackingApp
 {
     using System;
-    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     
     public partial class tbl_Roles
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tbl_Roles()
         {
-            this.tbl_Users = new HashSet<tbl_Users>();
+            this.tbl_Users = new  ObservableCollection<tbl_Users>();
         }
     
         public int RoleID { get; set; }
@@ -25,6 +25,6 @@ namespace TimeTrackingApp
         public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_Users> tbl_Users { get; set; }
+        public virtual ObservableCollection<tbl_Users> tbl_Users { get; set; }
     }
 }

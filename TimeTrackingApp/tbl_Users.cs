@@ -10,17 +10,17 @@
 namespace TimeTrackingApp
 {
     using System;
-    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     
     public partial class tbl_Users
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tbl_Users()
         {
-            this.tbl_Credentials = new HashSet<tbl_Credentials>();
-            this.tbl_Tasks = new HashSet<tbl_Tasks>();
-            this.tbl_TimeEntry = new HashSet<tbl_TimeEntry>();
-            this.tbl_Roles = new HashSet<tbl_Roles>();
+            this.tbl_Credentials = new  ObservableCollection<tbl_Credentials>();
+            this.tbl_Tasks = new  ObservableCollection<tbl_Tasks>();
+            this.tbl_TimeEntry = new  ObservableCollection<tbl_TimeEntry>();
+            this.tbl_Roles = new  ObservableCollection<tbl_Roles>();
         }
     
         public int UserID { get; set; }
@@ -30,12 +30,12 @@ namespace TimeTrackingApp
         public string LastName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_Credentials> tbl_Credentials { get; set; }
+        public virtual ObservableCollection<tbl_Credentials> tbl_Credentials { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_Tasks> tbl_Tasks { get; set; }
+        public virtual ObservableCollection<tbl_Tasks> tbl_Tasks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_TimeEntry> tbl_TimeEntry { get; set; }
+        public virtual ObservableCollection<tbl_TimeEntry> tbl_TimeEntry { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_Roles> tbl_Roles { get; set; }
+        public virtual ObservableCollection<tbl_Roles> tbl_Roles { get; set; }
     }
 }

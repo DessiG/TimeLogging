@@ -3,3 +3,7 @@
 ################################################################################
 
 /TimeTrackingApp/bin
+/TimeTrackingApp/obj
+/TimeTrackingApp/DB/TimeTracking.mdf
+/TimeTrackingApp/DB/TimeTracking_log.ldf
+/.vs/TimeTrackingApp/v15
