@@ -101,9 +101,6 @@
     </ApplicationDefinition>
     <Compile Include="Model\Task.cs" />
     <Compile Include="Model\TimeTrackingDb.cs" />
-    <Compile Include="Register.xaml.cs">
-      <DependentUpon>Register.xaml</DependentUpon>
-    </Compile>
     <Compile Include="tbl_Credentials.cs">
       <DependentUpon>TimeTrackingEntities.tt</DependentUpon>
     </Compile>
@@ -118,6 +115,9 @@
     </Compile>
     <Compile Include="tbl_Users.cs">
       <DependentUpon>TimeTrackingEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TimeEntry.xaml.cs">
+      <DependentUpon>TimeEntry.xaml</DependentUpon>
     </Compile>
     <Compile Include="TimeTrackingDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -156,7 +156,7 @@
       <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Register.xaml">
+    <Page Include="TimeEntry.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

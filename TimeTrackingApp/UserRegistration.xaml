@@ -12,14 +12,14 @@
         <CollectionViewSource x:Key="tbl_UsersViewSource" Source="{Binding tbl_Users, Source={StaticResource timeTrackingDataSet}}"/>
         <CollectionViewSource x:Key="tbl_CredentialsViewSource" Source="{Binding tbl_Credentials, Source={StaticResource timeTrackingDataSet}}"/>
     </Window.Resources>
-    <Border Margin="0" CornerRadius="20" Background="CadetBlue">
+    <Border CornerRadius="20" Background="CadetBlue">
         <Grid HorizontalAlignment="Center" Width="800" Height="600" Background="WhiteSmoke" Margin="25,25,25,25" VerticalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid x:Name="grid1" DataContext="{StaticResource tbl_UsersViewSource}" HorizontalAlignment="Center" Margin="50,0,50,40.06" Grid.Row="0" VerticalAlignment="Center" Width="700" Height="460">
+            <Grid x:Name="grid1" DataContext="{StaticResource tbl_UsersViewSource}" HorizontalAlignment="Center" Margin="50,0,50,40" Grid.Row="0" VerticalAlignment="Center" Width="700" Height="460">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" MinWidth="165.493"/>
                     <ColumnDefinition Width="Auto" MinWidth="125.373"/>
@@ -31,35 +31,35 @@
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
-                <Label Content="User ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,12,0,12.866" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="51"/>
+                <Label Content="User ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="80,13,0,10" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="51"/>
                 <TextBox x:Name="userIDTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="2.791,14,0,13.866" Grid.Row="0" Text="{Binding UserID, Mode=OneWay}" VerticalAlignment="Center" Width="150"/>
-                <Label Content="User Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,13.134,0,11.731" Grid.Row="1" VerticalAlignment="Center" Height="26" Width="163"/>
-                <TextBox x:Name="userNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="2.791,14.134,0,13.731" Grid.Row="1" Text="{Binding UserName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="150"/>
-                <Label Content="Phone:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,12.269,0,12.597" Grid.Row="2" VerticalAlignment="Center" Height="26" Width="154"/>
-                <TextBox x:Name="phoneTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="2.791,14.269,0,13.597" Grid.Row="2" Text="{Binding Phone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="150"/>
-                <Label Content="First Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,13.403,0,11.463" Grid.Row="3" VerticalAlignment="Center" Height="26" Width="154"/>
-                <TextBox x:Name="firstNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="2.791,14.403,0,13.463" Grid.Row="3" Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="150"/>
-                <Label Content="Last Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,11.537,0,13.328" Grid.Row="4" VerticalAlignment="Center" Height="26" Width="164" Grid.ColumnSpan="2"/>
-                <TextBox x:Name="lastNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="2.791,13.537,0,14.328" Grid.Row="4" Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="150"/>
+                <Label Content="User Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="80,13.134,0,11.731" Grid.Row="1" VerticalAlignment="Center" Height="26" Width="163"/>
+                <TextBox x:Name="userNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="34,14,0,14" Grid.Row="1" Text="{Binding UserName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="148"/>
+                <Label Content="Phone:" Grid.Column="0" HorizontalAlignment="Left" Margin="80,13,0,10" Grid.Row="2" VerticalAlignment="Center" Height="26" Width="154"/>
+                <TextBox x:Name="phoneTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="34,14,0,14" Grid.Row="2" Text="{Binding Phone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="148"/>
+                <Label Content="First Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="80,13,0,10" Grid.Row="3" VerticalAlignment="Center" Height="26" Width="154"/>
+                <TextBox x:Name="firstNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="34,14,0,14" Grid.Row="3" Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="148"/>
+                <Label Content="Last Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="80,13,0,10" Grid.Row="4" VerticalAlignment="Center" Height="26" Width="164" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="lastNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="34,14,0,14" Grid.Row="4" Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="148" RenderTransformOrigin="1.309,0.792"/>
                 <Grid x:Name="grid2" DataContext="{StaticResource tbl_CredentialsViewSource}" HorizontalAlignment="Left" Margin="0,50.537,-246.537,-282.672" Grid.Row="4" VerticalAlignment="Top" Height="283" Width="690" Grid.ColumnSpan="2">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" MinWidth="213.493"/>
-                        <ColumnDefinition Width="Auto" MinWidth="118.925"/>
+                        <ColumnDefinition Width="Auto" MinWidth="252"/>
+                        <ColumnDefinition Width="Auto" MinWidth="402"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
-                    <Label Content="Password:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,11.134,0,10.731" VerticalAlignment="Center" Height="29" Width="72"/>
-                    <TextBox x:Name="passwordTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="33.791,17.134,-30.567,10.731" Text="{Binding Password, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="150"/>
-                    <Label Content="Email:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,11.269,0,11.597" Grid.Row="1" VerticalAlignment="Center" Height="28" Width="46"/>
-                    <TextBox x:Name="emailTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="33.791,18.269,-29.851,9.597" Grid.Row="1" Text="{Binding Email, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="150"/>
-                    <Label Content="Comment:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,11.403,0,11.463" Grid.Row="2" VerticalAlignment="Center" Height="28" Width="74"/>
-                    <TextBox x:Name="commentTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="33.791,16.403,-29.134,11.463" Grid.Row="2" Text="{Binding Comment, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="150"/>
+                    <Label Content="Password:" Grid.Column="0" HorizontalAlignment="Left" Margin="80,13,0,10" VerticalAlignment="Center" Height="28" Width="72"/>
+                    <TextBox x:Name="passwordTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="34,14,0,13" Text="{Binding Password, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="150"/>
+                    <Label Content="Email:" Grid.Column="0" HorizontalAlignment="Left" Margin="80,13,0,10" Grid.Row="1" VerticalAlignment="Center" Height="28" Width="46"/>
+                    <TextBox x:Name="emailTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="34,13,0,15" Grid.Row="1" Text="{Binding Email, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="150"/>
+                    <Label Content="Comment:" Grid.Column="0" HorizontalAlignment="Left" Margin="80,13,0,10" Grid.Row="2" VerticalAlignment="Center" Height="28" Width="74"/>
+                    <TextBox x:Name="commentTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="34,18,0,10" Grid.Row="2" Text="{Binding Comment, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="150"/>
                 </Grid>
             </Grid>
-            <Button Content="Submit" HorizontalAlignment="Left" Margin="58,460,0,0" VerticalAlignment="Top" Width="117" Background="CadetBlue" Height="30"/>
+            <Button Content="Submit" HorizontalAlignment="Left" Margin="337,460,0,0" VerticalAlignment="Top" Width="150" Background="CadetBlue" Height="30"/>
         </Grid>
     </Border>
 </Window>

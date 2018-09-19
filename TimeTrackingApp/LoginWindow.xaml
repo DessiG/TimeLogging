@@ -8,25 +8,26 @@
         xmlns:local="clr-namespace:TimeTrackingApp"
         x:Class="TimeTrackingApp.LoginWindow"
         mc:Ignorable="d"
-        Title="Time tracking" Height="450" Width="500" AllowDrop="True" VerticalContentAlignment="Stretch" UseLayoutRounding="False" Background="#FF4A93AD" FontSize="14">
-    <Grid HorizontalAlignment="Right" Margin="0,0,0.328,-0.463" Width="494">
+        Title="Login" Height="600" Width="800" AllowDrop="True" VerticalContentAlignment="Stretch" UseLayoutRounding="True" Background="White" FontSize="14">
+    <Border Margin="0" CornerRadius="20" Background="CadetBlue">
 
-        <Label Content="Login" HorizontalAlignment="Left" Margin="85,40,0,0" VerticalAlignment="Top"/>
-        <Label Content="Username" HorizontalAlignment="Left" Margin="85,99,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="userNameTextBox" HorizontalAlignment="Left" Height="23" Margin="163,104,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <Label Content="Password" HorizontalAlignment="Left" Margin="85,149,0,0" VerticalAlignment="Top"/>
-        <PasswordBox x:Name="passwordTextBox" Width="108" HorizontalAlignment="Left" Margin="163,155,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="21">
-            <PasswordBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleX="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </PasswordBox.RenderTransform>
-        </PasswordBox>
-        <Button x:Name="LoginBtn" Content="Login" HorizontalAlignment="Left" Margin="163,252,0,0" VerticalAlignment="Top" Width="75" Click="LoginBtn_Click"/>
+        <Grid HorizontalAlignment="Center" Margin="25,25,25,25" VerticalAlignment="Center" Width="800" Height="600" Background="WhiteSmoke">
+            <Label Content="Username" HorizontalAlignment="Left" Margin="265,150,0,421" VerticalAlignment="Center" RenderTransformOrigin="0.691,1.878"/>
+            <TextBox x:Name="userNameTextBox" HorizontalAlignment="Left" Height="23" Margin="354,150,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="172" RenderTransformOrigin="1.199,3.171"/>
+            <Label Content="Password" HorizontalAlignment="Left" Margin="265,189,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.07,0.537" Width="72"/>
+            <PasswordBox x:Name="passwordTextBox" Width="173" HorizontalAlignment="Left" Margin="353,194,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="23">
+                <PasswordBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </PasswordBox.RenderTransform>
+            </PasswordBox>
+            <Button x:Name="LoginBtn" Content="Login" HorizontalAlignment="Left" Margin="354,262,0,0" VerticalAlignment="Top" Width="172" Click="LoginBtn_Click" Background="CadetBlue" Height="30"/>
 
+        </Grid>
 
-    </Grid>
+    </Border>
 </Window>
