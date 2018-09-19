@@ -30,9 +30,13 @@ namespace TimeTrackingApp
             TimeTrackingApp.TimeTrackingDataSet timeTrackingDataSet = ((TimeTrackingApp.TimeTrackingDataSet)(this.FindResource("timeTrackingDataSet")));
             // Load data into the table tbl_Users. You can modify this code as needed.
             TimeTrackingApp.TimeTrackingDataSetTableAdapters.tbl_UsersTableAdapter timeTrackingDataSettbl_UsersTableAdapter = new TimeTrackingApp.TimeTrackingDataSetTableAdapters.tbl_UsersTableAdapter();
-            timeTrackingDataSettbl_UsersTableAdapter.Fill(timeTrackingDataSet.tbl_Users);
             System.Windows.Data.CollectionViewSource tbl_UsersViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("tbl_UsersViewSource")));
             tbl_UsersViewSource.View.MoveCurrentToFirst();
+            // Load data into the table tbl_Credentials. You can modify this code as needed.
+            TimeTrackingApp.TimeTrackingDataSetTableAdapters.tbl_CredentialsTableAdapter timeTrackingDataSettbl_CredentialsTableAdapter = new TimeTrackingApp.TimeTrackingDataSetTableAdapters.tbl_CredentialsTableAdapter();
+            timeTrackingDataSettbl_CredentialsTableAdapter.Fill(timeTrackingDataSet.tbl_Credentials);
+            System.Windows.Data.CollectionViewSource tbl_CredentialsViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("tbl_CredentialsViewSource")));
+            tbl_CredentialsViewSource.View.MoveCurrentToFirst();
         }
     }
 }
