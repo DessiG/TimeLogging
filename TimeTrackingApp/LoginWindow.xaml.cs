@@ -21,19 +21,34 @@ namespace TimeTrackingApp
     /// </summary>
     public partial class LoginWindow : Window
     {
+        TimeTrackingContext context = new TimeTrackingContext();
+        CollectionViewSource loginViewSource;
+        //public MainWindow()
+        //{
+        //    InitializeComponent();
+        //    custViewSource = ((CollectionViewSource)(FindResource("customerViewSource")));
+        //    ordViewSource = ((CollectionViewSource)(FindResource("customerOrdersViewSource")));
+        //    DataContext = this;
+        //}
         public LoginWindow()
         {
-            
+            InitializeComponent();
+            //loginViewSource = ((CollectionViewSource)(FindResource("loginViewSource")));
+            DataContext = this;
         }
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
-            using (var db = new TimeTrackingContext())
-            {
-                var employees = db.Employees.Where(em => (em.Username == userNameTextBox.Text
+
+            var userRegisterForm = new UserRegistration();
+            var user = context.Credentials.Where(em => (em.Email == emailTextBox.Text
                && em.Password == passwordTextBox.Password)).FirstOrDefault();
-                    
+
+            if (user != null) {
+                userRegisterForm.Show();
+                this.Close();
             }
+            
         }
     }
 }

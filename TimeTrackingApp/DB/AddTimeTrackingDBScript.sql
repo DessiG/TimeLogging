@@ -79,13 +79,13 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[tbl_Credentials](
-	[UserID] [int] IDENTITY(1,1) NOT NULL,
+	[UserID] [int]  NOT NULL,
 	[Password] [nvarchar](50) NOT NULL,
 	[Email] [nvarchar](256) NOT NULL,
 	[CreateDate] [datetime] NOT NULL,
 	[LastLoginDate] [datetime] NOT NULL,
 	[Comment] [ntext] NULL,
-	[CredentialID] [int] NOT NULL,
+	[CredentialID] [int] IDENTITY(1,1) NOT NULL,
  CONSTRAINT [PK_tbl_Credentials] PRIMARY KEY CLUSTERED 
 (
 	[CredentialID] ASC
@@ -219,4 +219,37 @@ GO
 USE [master]
 GO
 ALTER DATABASE [TimeTracking] SET  READ_WRITE 
+GO
+
+USE [TimeTracking]
+GO
+INSERT INTO [dbo].[tbl_Users]
+           ([UserName]
+           ,[Phone]
+           ,[FirstName]
+           ,[LastName])
+     VALUES
+           ( 'admin'
+           ,null
+           ,'admin'
+           ,'admin')
+GO
+
+USE [TimeTracking]
+GO
+
+INSERT INTO [dbo].[tbl_Credentials]
+           ([UserID]
+           ,[Password]
+           ,[Email]
+           ,[CreateDate]
+           ,[LastLoginDate]
+           ,[Comment])
+     VALUES
+           ( 1
+           , 'admin'
+           ,'admin@admin.com'
+           ,'06-06-2019'
+           ,'06-06-2019'
+           ,null)
 GO

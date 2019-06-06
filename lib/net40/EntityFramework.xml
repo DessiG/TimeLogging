@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EntityFramework</name>
+    </assembly>
+    <members>
+        <member name="T:System.Data.Entity.Core.Mapping.FunctionImportResultMapping">
+            <summary>
+            Represents a result mapping for a function import.
+            </summary>
+        </member>
+        <member name="T:System.Data.Entity.Core.Mapping.MappingItem">
+            <summary>
+            Base class for items in the mapping space (DataSpace.CSSpace)
+            </summary>
+        </member>
+        <member name="M:System.Data.Entity.Core.Mapping.FunctionImportResultMapping.AddTypeMapping(System.Data.Entity.Core.Mapping.FunctionImportStructuralTypeMapping)">
+            <summary>
+            Adds a type mapping.
+            </summary>
+            <param name="typeMapping">The type mapping to add.</param>
+        </member>
+        <member name="M:System.Data.Entity.Core.Mapping.FunctionImportResultMapping.RemoveTypeMapping(System.Data.Entity.Core.Mapping.FunctionImportStructuralTypeMapping)">
+            <summary>
+            Removes a type mapping.
+            </summary>
+            <param name="typeMapping">The type mapping to remove.</param>
+        </member>
+        <member name="P:System.Data.Entity.Core.Mapping.FunctionImportResultMapping.TypeMappings">
+            <summary>
+            Gets the type mappings.
+            </summary>
+        </member>
+        <member name="T:System.Data.Entity.Core.Mapping.IsNullConditionMapping">
+            <summary>
+            Specifies a mapping condition evaluated by checking whether the value 
+            of the a property/column is null or not null.
+            </summary>
+        </member>
+        <member name="T:System.Data.Entity.Core.Mapping.ConditionPropertyMapping">
+            <summary>
+            Mapping metadata for Conditional property mapping on a type.
+            Condition Property Mapping specifies a Condition either oMappiem.Data.Entity.Corepping 

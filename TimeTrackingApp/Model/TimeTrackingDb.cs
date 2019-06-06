@@ -6,13 +6,14 @@ namespace TimeTrackingApp.Model
     {
 
 
-        public TimeTrackingContext() : base("TimeTrackingDb")
+        public TimeTrackingContext() : base("name=TimeTrackingEntities")
         {
-            Database.SetInitializer(new DropCreateDatabaseAlways<TimeTrackingContext>());
+          // Database.SetInitializer(new DropCreateDatabaseAlways<TimeTrackingContext>());
         }
 
 
-        public DbSet<Employee> Employees { get; set; }
-        public DbSet<Task> Tasks { get; set; }
+        public DbSet<tbl_Users> Users { get; set; }
+        public DbSet<tbl_Credentials> Credentials { get; set; }
+      //  public DbSet<Task> Tasks { get; set; }
     }
 }
