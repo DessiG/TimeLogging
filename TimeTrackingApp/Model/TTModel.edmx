@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TimeTracking_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="TaskID" />
+          </Key>
+          <Property Name="TaskID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaskTitle" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="TaskDescription" Type="nvarchar" MaxLength="255" />
+          <Property Name="TaskCreationDate" Type="datetime" Nullable="false" />
+          <Property Name="TaskDisabled" Type="bit" Nullable="false" />
+          <Property Name="TaskEstimateDuration" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TaskCompletionDate" Type="date" Nullable="false" />
+          <Property Name="TaskCreatorID" Type="int" Nullable="false" />
+          <Property Name="TaskUserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TimeEntry">
+          <Key>
+            <PropertyRef Name="TimeEntryId" />
+          </Key>
+          <Property Name="TimeEntryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TimeEntryCreated" Type="datetime" Nullable="false" />
+          <Property Name="TimeEntryDuration" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TimeEntryDescription" Type="nvarchar" MaxLength="1000" />
+          <Property Name="TimeEntryDate" Type="datetime" Nullable="false" />
+          <Property Name="TimeEntryUserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Phone" Type="nchar" MaxLength="16" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastLoginDate" Type="datetime" Nullable="false" />
+          <Property Name="Comment" Type="ntext" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TimeTracking.dbo.UsersRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UsersRoles">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Task_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="TaskUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TimeEntry_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="TimeEntry" Type="Self.TimeEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="TimeEntry">
+              <PropertyRef Name="TimeEntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersRoles_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="UsersRoles" Type="Self.UsersRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="UsersRoles">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersRoles_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UsersRoles" Type="Self.UsersRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UsersRoles">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TimeTracking_ModelStoreContainer">
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TimeEntry" EntityType="Self.TimeEntry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersRoles" EntityType="Self.UsersRoles" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UsersRoles].[UserID] AS [UserID], 
+    [UsersRoles].[RoleID] AS [RoleID]
+    FROM [dbo].[UsersRoles] AS [UsersRoles]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Task_User" Association="Self.FK_Task_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TimeEntry_User" Association="Self.FK_TimeEntry_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="TimeEntry" EntitySet="TimeEntry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersRoles_Role" Association="Self.FK_UsersRoles_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="UsersRoles" EntitySet="UsersRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersRoles_User" Association="Self.FK_UsersRoles_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UsersRoles" EntitySet="UsersRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TimeTracking_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="Self.UsersRoles" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="TaskID" />
+          </Key>
+          <Property Name="TaskID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TaskDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TaskCreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TaskDisabled" Type="Boolean" Nullable="false" />
+          <Property Name="TaskEstimateDuration" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TaskCompletionDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TaskCreatorID" Type="Int32" Nullable="false" />
+          <Property Name="TaskUserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Task_User" FromRole="Task" ToRole="User" />
+        </EntityType>
+        <EntityType Name="TimeEntry">
+          <Key>
+            <PropertyRef Name="TimeEntryId" />
+          </Key>
+          <Property Name="TimeEntryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TimeEntryCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TimeEntryDuration" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TimeEntryDescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="TimeEntryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TimeEntryUserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_TimeEntry_User" FromRole="TimeEntry" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="16" FixedLength="true" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tasks" Relationship="Self.FK_Task_User" FromRole="User" ToRole="Task" />
+          <NavigationProperty Name="TimeEntries" Relationship="Self.FK_TimeEntry_User" FromRole="User" ToRole="TimeEntry" />
+          <NavigationProperty Name="Roles" Relationship="Self.UsersRoles" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_Task_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="TaskUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TimeEntry_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="TimeEntry" Type="Self.TimeEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="TimeEntry">
+              <PropertyRef Name="TimeEntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UsersRoles">
+          <End Role="Role" Type="Self.Role" Multiplicity="*" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="TimeTrackingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Tasks" EntityType="Self.Task" />
+          <EntitySet Name="TimeEntries" EntityType="Self.TimeEntry" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Task_User" Association="Self.FK_Task_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Task" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TimeEntry_User" Association="Self.FK_TimeEntry_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="TimeEntry" EntitySet="TimeEntries" />
+          </AssociationSet>
+          <AssociationSet Name="UsersRoles" Association="Self.UsersRoles">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TimeTracking_ModelStoreContainer" CdmEntityContainer="TimeTrackingEntities">
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="TimeTracking_Model.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tasks">
+            <EntityTypeMapping TypeName="TimeTracking_Model.Task">
+              <MappingFragment StoreEntitySet="Task">
+                <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+                <ScalarProperty Name="TaskTitle" ColumnName="TaskTitle" />
+                <ScalarProperty Name="TaskDescription" ColumnName="TaskDescription" />
+                <ScalarProperty Name="TaskCreationDate" ColumnName="TaskCreationDate" />
+                <ScalarProperty Name="TaskDisabled" ColumnName="TaskDisabled" />
+                <ScalarProperty Name="TaskEstimateDuration" ColumnName="TaskEstimateDuration" />
+                <ScalarProperty Name="TaskCompletionDate" ColumnName="TaskCompletionDate" />
+                <ScalarProperty Name="TaskCreatorID" ColumnName="TaskCreatorID" />
+                <ScalarProperty Name="TaskUserID" ColumnName="TaskUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TimeEntries">
+            <EntityTypeMapping TypeName="TimeTracking_Model.TimeEntry">
+              <MappingFragment StoreEntitySet="TimeEntry">
+                <ScalarProperty Name="TimeEntryId" ColumnName="TimeEntryId" />
+                <ScalarProperty Name="TimeEntryCreated" ColumnName="TimeEntryCreated" />
+                <ScalarProperty Name="TimeEntryDuration" ColumnName="TimeEntryDuration" />
+                <ScalarProperty Name="TimeEntryDescription" ColumnName="TimeEntryDescription" />
+                <ScalarProperty Name="TimeEntryDate" ColumnName="TimeEntryDate" />
+                <ScalarProperty Name="TimeEntryUserID" ColumnName="TimeEntryUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="TimeTracking_Model.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="UsersRoles" TypeName="TimeTracking_Model.UsersRoles" StoreEntitySet="UsersRoles">
+            <EndProperty Name="Role">
+              <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+            </EndProperty>
+            <EndProperty Name="User">
+              <ScalarProperty Name="UserID" ColumnName="UserID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

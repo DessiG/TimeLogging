@@ -1,6 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Data;
 using System.Data.Entity;
+using System;
+using TimeTrackingApp.Model;
 
 namespace TimeTrackingApp
 {
@@ -10,14 +12,14 @@ namespace TimeTrackingApp
     public partial class UserRegistration : Window
     {
         TimeTrackingEntities context = new TimeTrackingEntities();
-        CollectionViewSource tbl_UsersViewSource;
+        CollectionViewSource UsersViewSource;
         CollectionViewSource credentialsViewSource;     
 
         public UserRegistration()
         {
             InitializeComponent();
-            tbl_UsersViewSource = ((CollectionViewSource)(FindResource("tbl_UsersViewSource")));
-            credentialsViewSource = ((CollectionViewSource)(FindResource("tbl_CredentialsViewSource")));
+            //UsersViewSource = ((CollectionViewSource)(FindResource("UsersViewSource")));
+            //credentialsViewSource = ((CollectionViewSource)(FindResource("tbl_CredentialsViewSource")));
             DataContext = this;
 
         }
@@ -36,12 +38,37 @@ namespace TimeTrackingApp
             //System.Windows.Data.CollectionViewSource tbl_CredentialsViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("tbl_CredentialsViewSource")));
             //tbl_CredentialsViewSource.View.MoveCurrentToFirst();
 
-            context.tbl_Users.Load();
-            tbl_UsersViewSource.Source = context.tbl_Users.Local;
+            //context.Users.Load();
+           // tbl_UsersViewSource.Source = context.tbl_Users.Local;
            // context.tbl_Credentials.Load();
             
            // credentialsViewSource.Source = context.tbl_Credentials.Local;
            
         }
+
+        private void SubmitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            User newUser = new User { 
+                UserName = userNameTextBox.Text ,
+                FirstName = firstNameTextBox.Text,
+                LastName = lastNameTextBox.Text,
+                Email = emailTextBox.Text,
+                Phone = phoneTextBox.Text,
+                CreatedDate = DateTime.Now,
+                LastLoginDate = DateTime.Now
+            };
+
+            
+                if (passwordTextBox.Text.Equals(verifyPasswordTextBox.Text))
+                {
+                    newUser.Password = passwordTextBox.Text;
+                    context.Users.Add(newUser);
+                    context.SaveChanges();
+                }
+                
+        }
+        
+
+
     }
 }

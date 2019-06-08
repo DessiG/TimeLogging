@@ -7,13 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TimeTrackingApp
+namespace TimeTrackingApp.Model
 {
     using System;
-    using System.Collections.ObjectModel;
+    using System.Collections.Generic;
     
-    public partial class tbl_TimeEntry
+    public partial class TimeEntry
     {
+        public TimeEntry() { }
+
         public int TimeEntryId { get; set; }
         public System.DateTime TimeEntryCreated { get; set; }
         public decimal TimeEntryDuration { get; set; }
@@ -21,6 +23,6 @@ namespace TimeTrackingApp
         public System.DateTime TimeEntryDate { get; set; }
         public int TimeEntryUserID { get; set; }
     
-        public virtual tbl_Users tbl_Users { get; set; }
+        public virtual User User { get; set; }
     }
 }

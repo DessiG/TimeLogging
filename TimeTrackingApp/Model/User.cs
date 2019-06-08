@@ -7,20 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TimeTrackingApp
+namespace TimeTrackingApp.Model
 {
     using System;
-    using System.Collections.ObjectModel;
+    using System.Collections.Generic;
     
-    public partial class tbl_Users
+    public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tbl_Users()
+        public User()
         {
-            this.tbl_Credentials = new  ObservableCollection<tbl_Credentials>();
-            this.tbl_Tasks = new  ObservableCollection<tbl_Tasks>();
-            this.tbl_TimeEntry = new  ObservableCollection<tbl_TimeEntry>();
-            this.tbl_Roles = new  ObservableCollection<tbl_Roles>();
+            this.Tasks = new HashSet<Task>();
+            this.TimeEntries = new HashSet<TimeEntry>();
+            this.Roles = new HashSet<Role>();
         }
     
         public int UserID { get; set; }
@@ -28,14 +27,17 @@ namespace TimeTrackingApp
         public string Phone { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public System.DateTime LastLoginDate { get; set; }
+        public string Comment { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableCollection<tbl_Credentials> tbl_Credentials { get; set; }
+        public virtual ICollection<Task> Tasks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableCollection<tbl_Tasks> tbl_Tasks { get; set; }
+        public virtual ICollection<TimeEntry> TimeEntries { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableCollection<tbl_TimeEntry> tbl_TimeEntry { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableCollection<tbl_Roles> tbl_Roles { get; set; }
+        public virtual ICollection<Role> Roles { get; set; }
     }
 }

@@ -7,17 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TimeTrackingApp
+namespace TimeTrackingApp.Model
 {
     using System;
-    using System.Collections.ObjectModel;
+    using System.Collections.Generic;
     
-    public partial class tbl_Roles
+    public partial class Role
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tbl_Roles()
+        public Role()
         {
-            this.tbl_Users = new  ObservableCollection<tbl_Users>();
+            this.Users = new HashSet<User>();
         }
     
         public int RoleID { get; set; }
@@ -25,6 +25,6 @@ namespace TimeTrackingApp
         public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ObservableCollection<tbl_Users> tbl_Users { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace TimeTrackingApp
     /// </summary>
     public partial class LoginWindow : Window
     {
-        TimeTrackingContext context = new TimeTrackingContext();
+        TimeTrackingEntities context = new TimeTrackingEntities();
         CollectionViewSource loginViewSource;
         //public MainWindow()
         //{
@@ -40,12 +40,13 @@ namespace TimeTrackingApp
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
 
-            var userRegisterForm = new UserRegistration();
-            var user = context.Credentials.Where(em => (em.Email == emailTextBox.Text
+            
+            var user = context.Users.Where(em => (em.Email == emailTextBox.Text
                && em.Password == passwordTextBox.Password)).FirstOrDefault();
 
             if (user != null) {
-                userRegisterForm.Show();
+                var mainW = new MainWindow();
+                mainW.Show();
                 this.Close();
             }
             

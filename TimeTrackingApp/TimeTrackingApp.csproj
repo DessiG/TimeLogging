@@ -99,50 +99,49 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\Task.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\TimeTrackingDb.cs" />
-    <Compile Include="tbl_Credentials.cs">
-      <DependentUpon>TimeTrackingEntities.tt</DependentUpon>
+    <Compile Include="Model\Role.cs">
+      <DependentUpon>TTModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="tbl_Roles.cs">
-      <DependentUpon>TimeTrackingEntities.tt</DependentUpon>
+    <Compile Include="Model\Task.cs">
+      <DependentUpon>TTModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="tbl_Tasks.cs">
-      <DependentUpon>TimeTrackingEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tbl_TimeEntry.cs">
-      <DependentUpon>TimeTrackingEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tbl_Users.cs">
-      <DependentUpon>TimeTrackingEntities.tt</DependentUpon>
+    <Compile Include="Model\TimeEntry.cs">
+      <DependentUpon>TTModel.tt</DependentUpon>
     </Compile>
     <Compile Include="TimeEntry.xaml.cs">
       <DependentUpon>TimeEntry.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TimeTrackingDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TimeTrackingDataSet.xsd</DependentUpon>
+    <Compile Include="TimeLoggingReport.xaml.cs">
+      <DependentUpon>TimeLoggingReport.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TimeTrackingEntities.Context.cs">
+    <Compile Include="Model\TTModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TimeTrackingEntities.Context.tt</DependentUpon>
+      <DependentUpon>TTModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="TimeTrackingEntities.cs">
+    <Compile Include="Model\TTModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TimeTrackingEntities.tt</DependentUpon>
+      <DependentUpon>TTModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TimeTrackingEntities.Designer.cs">
+    <Compile Include="Model\TTModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TimeTrackingEntities.edmx</DependentUpon>
+      <DependentUpon>TTModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\User.cs">
+      <DependentUpon>TTModel.tt</DependentUpon>
     </Compile>
     <Compile Include="UserRegistration.xaml.cs">
       <DependentUpon>UserRegistration.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\EmployeeViewModel.cs" />
+    <Compile Include="UsersList.xaml.cs">
+      <DependentUpon>UsersList.xaml</DependentUpon>
+    </Compile>
     <Page Include="LoginWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -151,16 +150,27 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Model\Employee.cs" />
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TimeEntry.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="TimeLoggingReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserRegistration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UsersList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -184,27 +194,17 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\TimeTrackingApp.Model.TimeTrackingContext.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <EntityDeploy Include="TimeTrackingEntities.edmx">
+    <EntityDeploy Include="Model\TTModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TimeTrackingEntities.Designer.cs</LastGenOutput>
+      <LastGenOutput>TTModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="TimeTrackingDataSet.xsc">
-      <DependentUpon>TimeTrackingDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="TimeTrackingDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>TimeTrackingDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="TimeTrackingDataSet.xss">
-      <DependentUpon>TimeTrackingDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="TimeTrackingEntities.edmx.diagram">
-      <DependentUpon>TimeTrackingEntities.edmx</DependentUpon>
+    <None Include="Model\TTModel.edmx.diagram">
+      <DependentUpon>TTModel.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -215,17 +215,17 @@
   <ItemGroup>
     <Content Include="DB\AddTimeTrackingDBScript.sql" />
     <Content Include="DB\CreateUserDB.sql" />
+    <Content Include="Model\TTModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TTModel.edmx</DependentUpon>
+      <LastGenOutput>TTModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\TTModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TTModel.edmx</DependentUpon>
+      <LastGenOutput>TTModel.cs</LastGenOutput>
+    </Content>
     <Resource Include="DB\DB_diagram.PNG" />
-    <Content Include="TimeTrackingEntities.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TimeTrackingEntities.edmx</DependentUpon>
-      <LastGenOutput>TimeTrackingEntities.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="TimeTrackingEntities.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TimeTrackingEntities.edmx</DependentUpon>
-      <LastGenOutput>TimeTrackingEntities.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
@@ -242,8 +242,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\DataSources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,38 +1,139 @@
-﻿<Window x:Class="TimeTrackingApp.TimeEntry"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TimeTrackingApp"
-        mc:Ignorable="d"
-        Title="TimeEntry" Height="600" Width="800" Loaded="Window_Loaded_1" FontSize="14">
-    <Window.Resources>
-        <local:TimeTrackingDataSet x:Key="timeTrackingDataSet"/>
-        <CollectionViewSource x:Key="tbl_TimeEntryViewSource" Source="{Binding tbl_TimeEntry, Source={StaticResource timeTrackingDataSet}}"/>
-    </Window.Resources>
-    <Border Margin="0" CornerRadius="20" Background="CadetBlue">
-        <Grid x:Name="timeEntryGrid" DataContext="{StaticResource tbl_TimeEntryViewSource}" HorizontalAlignment="Center" Width="800" Height="600" Background="WhiteSmoke" Margin="25,25,25,25" VerticalAlignment="Center">
+﻿<Window
+    x:Class="TimeTrackingApp.TimeEntry"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:TimeTrackingApp"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="TimeEntry"
+    Width="800"
+    Height="600"
+    FontSize="14"
+    Loaded="Window_Loaded_1"
+    mc:Ignorable="d">
+
+    <Border
+        Margin="0"
+        Background="CadetBlue"
+        CornerRadius="20">
+        <Grid
+            x:Name="timeEntryGrid"
+            Width="800"
+            Height="600"
+            Margin="25,25,25,25"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="WhiteSmoke"
+            DataContext="{Binding newTimeEntry, Mode=TwoWay}">
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="300"/>
-                <ColumnDefinition Width="500"/>
+                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="500" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
             </Grid.RowDefinitions>
-            <Label Content="Time Entry Duration:" Grid.Column="0" HorizontalAlignment="Left" Margin="80,13,0,10" Grid.Row="1" VerticalAlignment="Center" Width="163" Height="28"/>
-            <TextBox x:Name="timeEntryDurationTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="3" Grid.Row="1" Text="{Binding TimeEntryDuration, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="150"/>
-            <Label Content="Time Entry Description:" Grid.Column="0" HorizontalAlignment="Left" Margin="80,12,0,10" Grid.Row="2" VerticalAlignment="Center" RenderTransformOrigin="1.558,0.704" Width="150" Height="29"/>
-            <TextBox x:Name="timeEntryDescriptionTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding TimeEntryDescription, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="150"/>
-            <Label Content="Time Entry Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="80,13,0,10" Grid.Row="3" VerticalAlignment="Center" Height="28"/>
-            <DatePicker x:Name="timeEntryDateDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="3" SelectedDate="{Binding TimeEntryDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="150"/>
-            <Label Content="Username:" Grid.Column="0" HorizontalAlignment="Left" Margin="80,20,0,0" Grid.Row="4" VerticalAlignment="Center" Height="28"/>
-            <TextBox x:Name="timeEntryUserIDTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="3,22,0,7" Grid.Row="4" Text="{Binding TimeEntryUserID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="150"/>
-            <Button Content="Save time" HorizontalAlignment="Left" Margin="3,0,0,-67" VerticalAlignment="Bottom" Width="150" Background="CadetBlue" Height="30" Grid.Row="4" Grid.Column="1"/>
+            <Label
+                Grid.Row="1"
+                Grid.RowSpan="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Width="163"
+                Height="28"
+                Margin="140,23.134,0,50.597"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Content="Time Entry Duration:" />
+            <TextBox
+                x:Name="timeEntryDurationTextBox"
+                Grid.Row="1"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                Width="150"
+                Height="22"
+                Margin="2.821,29.134,0,50.597"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Text="{Binding TimeEntryDuration, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                Typography.NumeralStyle="Normal" />
+            <Label
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Width="163"
+                Height="29"
+                Margin="140,20.269,0,1.597"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Content="Time Entry Description:"
+                RenderTransformOrigin="1.558,0.704" />
+            <TextBox
+                x:Name="timeEntryDescriptionTextBox"
+                Grid.Row="2"
+                Grid.Column="1"
+                Width="305"
+                Height="23"
+                Margin="2.821,26.269,0,1.597"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Text="{Binding TimeEntryDescription, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+            <Label
+                Grid.Row="3"
+                Grid.Column="0"
+                Width="160"
+                Height="28"
+                Margin="140,13.403,0,9.463"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Content="Time Entry Date:" />
+            <DatePicker
+                x:Name="timeEntryDateDatePicker"
+                Grid.Row="3"
+                Grid.Column="1"
+                Width="150"
+                Margin="2.821,24.403,0,0.463"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                DisplayDate="2019-08-06"
+                SelectedDate="{Binding TimeEntryDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, StringFormat='dd-MM-yyy', ValidatesOnDataErrors=true}"
+                SelectedDateFormat="Long" />
+            <Label
+                Grid.Row="4"
+                Grid.Column="0"
+                Height="28"
+                Margin="140,12.537,0,10.328"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Content="Username:" />
+            <TextBox
+                x:Name="timeEntryUserIDTextBox"
+                Grid.Row="4"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                Width="150"
+                Height="22"
+                Margin="2.821,29.537,0,50.194"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Text="{Binding TimeEntryUserID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+            <Button
+                Name="SaveBtn"
+                Grid.Row="5"
+                Grid.Column="1"
+                Width="150"
+                Height="30"
+                Margin="2.821,0,0,0.194"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Background="CadetBlue"
+                Click="SaveBtn_Click"
+                Content="Save time" />
         </Grid>
     </Border>
 
