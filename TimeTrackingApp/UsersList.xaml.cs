@@ -27,7 +27,7 @@ namespace TimeTrackingApp
         public UsersList()
         {
             InitializeComponent();
-            userViewSource = ((CollectionViewSource)(FindResource("userViewSource")));
+           // userViewSource = ((CollectionViewSource)(FindResource("userViewSource")));
             DataContext = this;
         }
 

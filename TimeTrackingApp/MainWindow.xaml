@@ -48,13 +48,14 @@
                 Click="TimeLoggingBtn_Click"
                 Content="Time Logging" />
             <Button
-                x:Name="Exit"
+                x:Name="ExitBtn"
                 Width="172"
                 Height="30"
                 Margin="536,90,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Background="CadetBlue"
+                Click="ExitBtn_Click"
                 Content="Exit" />
 
         </Grid>

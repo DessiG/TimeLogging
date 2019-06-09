@@ -37,5 +37,10 @@ namespace TimeTrackingApp
             timeLoggingReport.Show();
             this.Close();
         }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
     }   
 }

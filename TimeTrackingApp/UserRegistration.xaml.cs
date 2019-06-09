@@ -48,6 +48,7 @@ namespace TimeTrackingApp
 
         private void SubmitBtn_Click(object sender, RoutedEventArgs e)
         {
+            
             User newUser = new User { 
                 UserName = userNameTextBox.Text ,
                 FirstName = firstNameTextBox.Text,
@@ -64,6 +65,9 @@ namespace TimeTrackingApp
                     newUser.Password = passwordTextBox.Text;
                     context.Users.Add(newUser);
                     context.SaveChanges();
+                    var userList = new UsersList();
+                    userList.userDataGrid.Items.Refresh();
+                    this.Close();
                 }
                 
         }

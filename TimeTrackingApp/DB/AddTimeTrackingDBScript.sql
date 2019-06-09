@@ -224,35 +224,22 @@ GO
 
 USE [TimeTracking]
 GO
-INSERT INTO [dbo].[tbl_Users]
+
+INSERT INTO [dbo].[User]
            ([UserName]
            ,[Phone]
            ,[FirstName]
-           ,[LastName])
+           ,[LastName]
+           ,[Password]
+           ,[Email]
+)
      VALUES
            ( 'admin'
            ,null
            ,'admin'
-           ,'admin')
-GO
-
-USE [TimeTracking]
-GO
-
-INSERT INTO [dbo].[tbl_Credentials]
-           ([UserID]
-           ,[Password]
-           ,[Email]
-           ,[CreateDate]
-           ,[LastLoginDate]
-           ,[Comment])
-     VALUES
-           ( 1
-           , 'admin'
-           ,'admin@admin.com'
-           ,'06-06-2019'
-           ,'06-06-2019'
-           ,null)
+           ,'admin'
+           ,'admin'
+           ,'admin@admin.com')
 GO
 
 USE [TimeTracking]
