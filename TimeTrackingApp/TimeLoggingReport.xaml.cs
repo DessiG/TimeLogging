@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TimeTrackingApp.Model;
+using System.Data;
+using System.Data.Entity;
 
 namespace TimeTrackingApp
 {
@@ -19,22 +22,25 @@ namespace TimeTrackingApp
     /// </summary>
     public partial class TimeLoggingReport : Window
     {
+        TimeTrackingEntities context = new TimeTrackingEntities();
+
         public TimeLoggingReport()
         {
             InitializeComponent();
+            DataContext = this;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+            context.TimeEntries.Load();
+            this.timeEntriesDataGrid.ItemsSource = context.TimeEntries.Local;
         }
 
-        private void Window_Loaded_1(object sender, RoutedEventArgs e)
-        {
 
-            System.Windows.Data.CollectionViewSource userViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("userViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // userViewSource.Source = [generic data source]
+        private void NewTimeLog_Click(object sender, RoutedEventArgs e)
+        {
+            var timeEntryWindow = new TimeEntry();
+            timeEntryWindow.Show();
         }
     }
 }

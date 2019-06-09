@@ -33,8 +33,8 @@ namespace TimeTrackingApp
 
         private void TimeLoggingBtn_Click(object sender, RoutedEventArgs e)
         {
-            var TimeEntry = new TimeEntry();
-            TimeEntry.Show();
+            var timeLoggingReport = new TimeLoggingReport();
+            timeLoggingReport.Show();
             this.Close();
         }
     }   

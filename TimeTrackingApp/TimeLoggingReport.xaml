@@ -8,432 +8,85 @@
     Title="TimeLoggingReport"
     Width="800"
     Height="600"
-    Loaded="Window_Loaded_1"
+    Loaded="Window_Loaded"
     mc:Ignorable="d">
     <Window.Resources>
         <!--<CollectionViewSource x:Key="userTimeEntriesViewSource" Source="{Binding TimeEntries, Source={StaticResource userViewSource}}"/>-->
     </Window.Resources>
-    <DataGrid
-        x:Name="timeEntriesDataGrid"
-        Width="400"
-        Height="200"
-        AutoGenerateColumns="False"
-        EnableRowVirtualization="True"
-        RowDetailsVisibilityMode="VisibleWhenSelected">
-        <DataGrid.Columns>
-            <DataGridTextColumn
-                x:Name="actualHeightColumn"
-                Width="SizeToHeader"
-                Binding="{Binding ActualHeight}"
-                Header="Actual Height"
-                IsReadOnly="True" />
-            <DataGridTextColumn
-                x:Name="actualWidthColumn"
-                Width="SizeToHeader"
-                Binding="{Binding ActualWidth}"
-                Header="Actual Width"
-                IsReadOnly="True" />
-            <DataGridCheckBoxColumn
-                x:Name="allowDropColumn"
-                Width="SizeToHeader"
-                Binding="{Binding AllowDrop}"
-                Header="Allow Drop" />
-            <DataGridCheckBoxColumn
-                x:Name="allowsTransparencyColumn"
-                Width="SizeToHeader"
-                Binding="{Binding AllowsTransparency}"
-                Header="Allows Transparency" />
-            <DataGridCheckBoxColumn
-                x:Name="areAnyTouchesCapturedColumn"
-                Width="SizeToHeader"
-                Binding="{Binding AreAnyTouchesCaptured}"
-                Header="Are Any Touches Captured"
-                IsReadOnly="True" />
-            <DataGridCheckBoxColumn
-                x:Name="areAnyTouchesCapturedWithinColumn"
-                Width="SizeToHeader"
-                Binding="{Binding AreAnyTouchesCapturedWithin}"
-                Header="Are Any Touches Captured Within"
-                IsReadOnly="True" />
-            <DataGridCheckBoxColumn
-                x:Name="areAnyTouchesDirectlyOverColumn"
-                Width="SizeToHeader"
-                Binding="{Binding AreAnyTouchesDirectlyOver}"
-                Header="Are Any Touches Directly Over"
-                IsReadOnly="True" />
-            <DataGridCheckBoxColumn
-                x:Name="areAnyTouchesOverColumn"
-                Width="SizeToHeader"
-                Binding="{Binding AreAnyTouchesOver}"
-                Header="Are Any Touches Over"
-                IsReadOnly="True" />
-            <DataGridCheckBoxColumn
-                x:Name="clipToBoundsColumn"
-                Width="SizeToHeader"
-                Binding="{Binding ClipToBounds}"
-                Header="Clip To Bounds" />
-            <DataGridTextColumn
-                x:Name="contentStringFormatColumn"
-                Width="SizeToHeader"
-                Binding="{Binding ContentStringFormat}"
-                Header="Content String Format" />
-            <DataGridCheckBoxColumn
-                x:Name="dialogResultColumn"
-                Width="SizeToHeader"
-                Binding="{Binding DialogResult}"
-                Header="Dialog Result" />
-            <DataGridTextColumn
-                x:Name="flowDirectionColumn"
-                Width="SizeToHeader"
-                Binding="{Binding FlowDirection}"
-                Header="Flow Direction" />
-            <DataGridCheckBoxColumn
-                x:Name="focusableColumn"
-                Width="SizeToHeader"
-                Binding="{Binding Focusable}"
-                Header="Focusable" />
-            <DataGridTextColumn
-                x:Name="fontSizeColumn"
-                Width="SizeToHeader"
-                Binding="{Binding FontSize}"
-                Header="Font Size" />
-            <DataGridCheckBoxColumn
-                x:Name="forceCursorColumn"
-                Width="SizeToHeader"
-                Binding="{Binding ForceCursor}"
-                Header="Force Cursor" />
-            <DataGridCheckBoxColumn
-                x:Name="hasAnimatedPropertiesColumn"
-                Width="SizeToHeader"
-                Binding="{Binding HasAnimatedProperties}"
-                Header="Has Animated Properties"
-                IsReadOnly="True" />
-            <DataGridTextColumn
-                x:Name="heightColumn"
-                Width="SizeToHeader"
-                Binding="{Binding Height}"
-                Header="Height" />
-            <DataGridTextColumn
-                x:Name="horizontalAlignmentColumn"
-                Width="SizeToHeader"
-                Binding="{Binding HorizontalAlignment}"
-                Header="Horizontal Alignment" />
-            <DataGridTextColumn
-                x:Name="horizontalContentAlignmentColumn"
-                Width="SizeToHeader"
-                Binding="{Binding HorizontalContentAlignment}"
-                Header="Horizontal Content Alignment" />
-            <DataGridCheckBoxColumn
-                x:Name="isActiveColumn"
-                Width="SizeToHeader"
-                Binding="{Binding IsActive}"
-                Header="Is Active"
-                IsReadOnly="True" />
-            <DataGridCheckBoxColumn
-                x:Name="isArrangeValidColumn"
-                Width="SizeToHeader"
-                Binding="{Binding IsArrangeValid}"
-                Header="Is Arrange Valid"
-                IsReadOnly="True" />
-            <DataGridCheckBoxColumn
-                x:Name="isEnabledColumn"
-                Width="SizeToHeader"
-                Binding="{Binding IsEnabled}"
-                Header="Is Enabled" />
-            <DataGridCheckBoxColumn
-                x:Name="isFocusedColumn"
-                Width="SizeToHeader"
-                Binding="{Binding IsFocused}"
-                Header="Is Focused"
-                IsReadOnly="True" />
-            <DataGridCheckBoxColumn
-                x:Name="isHitTestVisibleColumn"
-                Width="SizeToHeader"
-                Binding="{Binding IsHitTestVisible}"
-                Header="Is Hit Test Visible" />
-            <DataGridCheckBoxColumn
-                x:Name="isInitializedColumn"
-                Width="SizeToHeader"
-                Binding="{Binding IsInitialized}"
-                Header="Is Initialized"
-                IsReadOnly="True" />
-            <DataGridCheckBoxColumn
-                x:Name="isInputMethodEnabledColumn"
-                Width="SizeToHeader"
-                Binding="{Binding IsInputMethodEnabled}"
-                Header="Is Input Method Enabled"
-                IsReadOnly="True" />
-            <DataGridCheckBoxColumn
-                x:Name="isKeyboardFocusedColumn"
-                Width="SizeToHeader"
-                Binding="{Binding IsKeyboardFocused}"
-                Header="Is Keyboard Focused"
-                IsReadOnly="True" />
-            <DataGridCheckBoxColumn
-                x:Name="isKeyboardFocusWithinColumn"
-                Width="SizeToHeader"
-                Binding="{Binding IsKeyboardFocusWithin}"
-                Header="Is Keyboard Focus Within"
-                IsReadOnly="True" />
-            <DataGridCheckBoxColumn
-                x:Name="isLoadedColumn"
-                Width="SizeToHeader"
-                Binding="{Binding IsLoaded}"
-                Header="Is Loaded"
-                IsReadOnly="True" />
-            <DataGridCheckBoxColumn
-                x:Name="isManipulationEnabledColumn"
-                Width="SizeToHeader"
-                Binding="{Binding IsManipulationEnabled}"
-                Header="Is Manipulation Enabled" />
-            <DataGridCheckBoxColumn
-                x:Name="isMeasureValidColumn"
-                Width="SizeToHeader"
-                Binding="{Binding IsMeasureValid}"
-                Header="Is Measure Valid"
-                IsReadOnly="True" />
-            <DataGridCheckBoxColumn
-                x:Name="isMouseCapturedColumn"
-                Width="SizeToHeader"
-                Binding="{Binding IsMouseCaptured}"
-                Header="Is Mouse Captured"
-                IsReadOnly="True" />
-            <DataGridCheckBoxColumn
-                x:Name="isMouseCaptureWithinColumn"
-                Width="SizeToHeader"
-                Binding="{Binding IsMouseCaptureWithin}"
-                Header="Is Mouse Capture Within"
-                IsReadOnly="True" />
-            <DataGridCheckBoxColumn
-                x:Name="isMouseDirectlyOverColumn"
-                Width="SizeToHeader"
-                Binding="{Binding IsMouseDirectlyOver}"
-                Header="Is Mouse Directly Over"
-                IsReadOnly="True" />
-            <DataGridCheckBoxColumn
-                x:Name="isMouseOverColumn"
-                Width="SizeToHeader"
-                Binding="{Binding IsMouseOver}"
-                Header="Is Mouse Over"
-                IsReadOnly="True" />
-            <DataGridCheckBoxColumn
-                x:Name="isSealedColumn"
-                Width="SizeToHeader"
-                Binding="{Binding IsSealed}"
-                Header="Is Sealed"
-                IsReadOnly="True" />
-            <DataGridCheckBoxColumn
-                x:Name="isStylusCapturedColumn"
-                Width="SizeToHeader"
-                Binding="{Binding IsStylusCaptured}"
-                Header="Is Stylus Captured"
-                IsReadOnly="True" />
-            <DataGridCheckBoxColumn
-                x:Name="isStylusCaptureWithinColumn"
-                Width="SizeToHeader"
-                Binding="{Binding IsStylusCaptureWithin}"
-                Header="Is Stylus Capture Within"
-                IsReadOnly="True" />
-            <DataGridCheckBoxColumn
-                x:Name="isStylusDirectlyOverColumn"
-                Width="SizeToHeader"
-                Binding="{Binding IsStylusDirectlyOver}"
-                Header="Is Stylus Directly Over"
-                IsReadOnly="True" />
-            <DataGridCheckBoxColumn
-                x:Name="isStylusOverColumn"
-                Width="SizeToHeader"
-                Binding="{Binding IsStylusOver}"
-                Header="Is Stylus Over"
-                IsReadOnly="True" />
-            <DataGridCheckBoxColumn
-                x:Name="isTabStopColumn"
-                Width="SizeToHeader"
-                Binding="{Binding IsTabStop}"
-                Header="Is Tab Stop" />
-            <DataGridCheckBoxColumn
-                x:Name="isVisibleColumn"
-                Width="SizeToHeader"
-                Binding="{Binding IsVisible}"
-                Header="Is Visible"
-                IsReadOnly="True" />
-            <DataGridTextColumn
-                x:Name="leftColumn"
-                Width="SizeToHeader"
-                Binding="{Binding Left}"
-                Header="Left" />
-            <DataGridTextColumn
-                x:Name="maxHeightColumn"
-                Width="SizeToHeader"
-                Binding="{Binding MaxHeight}"
-                Header="Max Height" />
-            <DataGridTextColumn
-                x:Name="maxWidthColumn"
-                Width="SizeToHeader"
-                Binding="{Binding MaxWidth}"
-                Header="Max Width" />
-            <DataGridTextColumn
-                x:Name="minHeightColumn"
-                Width="SizeToHeader"
-                Binding="{Binding MinHeight}"
-                Header="Min Height" />
-            <DataGridTextColumn
-                x:Name="minWidthColumn"
-                Width="SizeToHeader"
-                Binding="{Binding MinWidth}"
-                Header="Min Width" />
-            <DataGridTextColumn
-                x:Name="nameColumn"
-                Width="SizeToHeader"
-                Binding="{Binding Name}"
-                Header="Name" />
-            <DataGridTextColumn
-                x:Name="opacityColumn"
-                Width="SizeToHeader"
-                Binding="{Binding Opacity}"
-                Header="Opacity" />
-            <DataGridCheckBoxColumn
-                x:Name="overridesDefaultStyleColumn"
-                Width="SizeToHeader"
-                Binding="{Binding OverridesDefaultStyle}"
-                Header="Overrides Default Style" />
-            <DataGridTextColumn
-                x:Name="persistIdColumn"
-                Width="SizeToHeader"
-                Binding="{Binding PersistId}"
-                Header="Persist Id"
-                IsReadOnly="True" />
-            <DataGridTextColumn
-                x:Name="resizeModeColumn"
-                Width="SizeToHeader"
-                Binding="{Binding ResizeMode}"
-                Header="Resize Mode" />
-            <DataGridCheckBoxColumn
-                x:Name="showActivatedColumn"
-                Width="SizeToHeader"
-                Binding="{Binding ShowActivated}"
-                Header="Show Activated" />
-            <DataGridCheckBoxColumn
-                x:Name="showInTaskbarColumn"
-                Width="SizeToHeader"
-                Binding="{Binding ShowInTaskbar}"
-                Header="Show In Taskbar" />
-            <DataGridTextColumn
-                x:Name="sizeToContentColumn"
-                Width="SizeToHeader"
-                Binding="{Binding SizeToContent}"
-                Header="Size To Content" />
-            <DataGridCheckBoxColumn
-                x:Name="snapsToDevicePixelsColumn"
-                Width="SizeToHeader"
-                Binding="{Binding SnapsToDevicePixels}"
-                Header="Snaps To Device Pixels" />
-            <DataGridTextColumn
-                x:Name="tabIndexColumn"
-                Width="SizeToHeader"
-                Binding="{Binding TabIndex}"
-                Header="Tab Index" />
-            <DataGridTemplateColumn
-                x:Name="timeEntryCreatedColumn"
-                Width="SizeToHeader"
-                Header="Time Entry Created">
-                <DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate>
-                        <DatePicker SelectedDate="{Binding TimeEntryCreated, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
-                    </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
-            </DataGridTemplateColumn>
-            <DataGridTemplateColumn
-                x:Name="timeEntryDateColumn"
-                Width="SizeToHeader"
-                Header="Time Entry Date">
-                <DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate>
-                        <DatePicker SelectedDate="{Binding TimeEntryDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
-                    </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
-            </DataGridTemplateColumn>
-            <DataGridTextColumn
-                x:Name="timeEntryDescriptionColumn"
-                Width="SizeToHeader"
-                Binding="{Binding TimeEntryDescription}"
-                Header="Time Entry Description" />
-            <DataGridTextColumn
-                x:Name="timeEntryDurationColumn"
-                Width="SizeToHeader"
-                Binding="{Binding TimeEntryDuration}"
-                Header="Time Entry Duration" />
-            <DataGridTextColumn
-                x:Name="timeEntryIdColumn"
-                Width="SizeToHeader"
-                Binding="{Binding TimeEntryId}"
-                Header="Time Entry Id" />
-            <DataGridTextColumn
-                x:Name="timeEntryUserIDColumn"
-                Width="SizeToHeader"
-                Binding="{Binding TimeEntryUserID}"
-                Header="Time Entry User ID" />
-            <DataGridTextColumn
-                x:Name="titleColumn"
-                Width="SizeToHeader"
-                Binding="{Binding Title}"
-                Header="Title" />
-            <DataGridTextColumn
-                x:Name="topColumn"
-                Width="SizeToHeader"
-                Binding="{Binding Top}"
-                Header="Top" />
-            <DataGridCheckBoxColumn
-                x:Name="topmostColumn"
-                Width="SizeToHeader"
-                Binding="{Binding Topmost}"
-                Header="Topmost" />
-            <DataGridTextColumn
-                x:Name="uidColumn"
-                Width="SizeToHeader"
-                Binding="{Binding Uid}"
-                Header="Uid" />
-            <DataGridCheckBoxColumn
-                x:Name="useLayoutRoundingColumn"
-                Width="SizeToHeader"
-                Binding="{Binding UseLayoutRounding}"
-                Header="Use Layout Rounding" />
-            <DataGridTextColumn
-                x:Name="verticalAlignmentColumn"
-                Width="SizeToHeader"
-                Binding="{Binding VerticalAlignment}"
-                Header="Vertical Alignment" />
-            <DataGridTextColumn
-                x:Name="verticalContentAlignmentColumn"
-                Width="SizeToHeader"
-                Binding="{Binding VerticalContentAlignment}"
-                Header="Vertical Content Alignment" />
-            <DataGridTextColumn
-                x:Name="visibilityColumn"
-                Width="SizeToHeader"
-                Binding="{Binding Visibility}"
-                Header="Visibility" />
-            <DataGridTextColumn
-                x:Name="widthColumn"
-                Width="SizeToHeader"
-                Binding="{Binding Width}"
-                Header="Width" />
-            <DataGridTextColumn
-                x:Name="windowStartupLocationColumn"
-                Width="SizeToHeader"
-                Binding="{Binding WindowStartupLocation}"
-                Header="Window Startup Location" />
-            <DataGridTextColumn
-                x:Name="windowStateColumn"
-                Width="SizeToHeader"
-                Binding="{Binding WindowState}"
-                Header="Window State" />
-            <DataGridTextColumn
-                x:Name="windowStyleColumn"
-                Width="SizeToHeader"
-                Binding="{Binding WindowStyle}"
-                Header="Window Style" />
-        </DataGrid.Columns>
-    </DataGrid>
+    <Border Background="CadetBlue" CornerRadius="20">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="550" />
+            </Grid.RowDefinitions>
+            <Button
+                Name="NewTimeLog"
+                Grid.Row="0"
+                Width="100"
+                Margin="20,15,25,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Click="NewTimeLog_Click"
+                Content="New time entry" />
+            <DataGrid
+                x:Name="timeEntriesDataGrid"
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Width="800"
+                Height="550"
+                Margin="20"
+                AutoGenerateColumns="False"
+                ColumnHeaderHeight="50"
+                EnableRowVirtualization="True"
+                IsReadOnly="True"
+                RowDetailsVisibilityMode="VisibleWhenSelected">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn
+                        x:Name="timeEntryCreatedColumn"
+                        Width="90"
+                        Header="Date Created"
+                        IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <DatePicker IsEnabled="False" SelectedDate="{Binding TimeEntryCreated, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn
+                        x:Name="timeEntryDateColumn"
+                        Width="100"
+                        Header="Time Entry Date">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <DatePicker SelectedDate="{Binding TimeEntryDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn
+                        x:Name="timeEntryDescriptionColumn"
+                        Width="90"
+                        Binding="{Binding TimeEntryDescription}"
+                        Header="Description" />
+                    <DataGridTextColumn
+                        x:Name="timeEntryDurationColumn"
+                        Width="100"
+                        Binding="{Binding TimeEntryDuration}"
+                        Header="Duration" />
 
+                    <DataGridTextColumn
+                        x:Name="timeEntryUserIDColumn"
+                        Width="100"
+                        Binding="{Binding TimeEntryUserID}"
+                        Header="User ID" />
+
+                    <DataGridTextColumn
+                        x:Name="timeEntryUserName"
+                        Width="100"
+                        Binding="{Binding TimeEntryUserName}"
+                        Header="UserName" />
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Border>
 </Window>

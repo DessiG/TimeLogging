@@ -11,7 +11,8 @@ namespace TimeTrackingApp.Model
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class TimeEntry
     {
         public TimeEntry() { }
@@ -20,9 +21,10 @@ namespace TimeTrackingApp.Model
         public System.DateTime TimeEntryCreated { get; set; }
         public decimal TimeEntryDuration { get; set; }
         public string TimeEntryDescription { get; set; }
-        public System.DateTime TimeEntryDate { get; set; }
+        [Column(TypeName = "datetime2")]
+        public DateTime? TimeEntryDate { get; set; }
         public int TimeEntryUserID { get; set; }
-    
+        public string TimeEntryUserName { get; set; }
         public virtual User User { get; set; }
     }
 }

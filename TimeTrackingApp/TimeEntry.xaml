@@ -11,7 +11,6 @@
     FontSize="14"
     Loaded="Window_Loaded_1"
     mc:Ignorable="d">
-
     <Border
         Margin="0"
         Background="CadetBlue"
@@ -100,9 +99,7 @@
                 Margin="2.821,24.403,0,0.463"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                DisplayDate="2019-08-06"
-                SelectedDate="{Binding TimeEntryDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, StringFormat='dd-MM-yyy', ValidatesOnDataErrors=true}"
-                SelectedDateFormat="Long" />
+                Text="{Binding TimeEntryDate, StringFormat='YYYY/MM/DD'}" />
             <Label
                 Grid.Row="4"
                 Grid.Column="0"

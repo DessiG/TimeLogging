@@ -31,15 +31,15 @@ namespace TimeTrackingApp
             var userId = 0;
             if (timeEntryUserIDTextBox.Text != null) {
                 var user = context.Users.Where(us => (us.UserName == timeEntryUserIDTextBox.Text)).FirstOrDefault();
-                //userId = user[0].UserId;
+                userId = user.UserID;
             }
 
             TimeTrackingApp.Model.TimeEntry newTimeEntry = new TimeTrackingApp.Model.TimeEntry
             {
                 TimeEntryDuration = decimal.Parse(timeEntryDurationTextBox.Text),
                 TimeEntryDescription = timeEntryDescriptionTextBox.Text,
-                TimeEntryDate = timeEntryDateDatePicker.SelectedDate.Value.Date
-                //TimeEntryUserID = userid
+                TimeEntryDate = System.DateTime.Now,
+                TimeEntryUserID = userId
             };
 
             context.TimeEntries.Add(newTimeEntry);
