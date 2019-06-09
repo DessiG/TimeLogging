@@ -146,7 +146,6 @@ CREATE TABLE [dbo].[TimeEntry](
 	[TimeEntryDuration] [decimal](18, 0) NOT NULL,
 	[TimeEntryDescription] [nvarchar](1000) NULL,
 	[TimeEntryDate] [datetime] NOT NULL,
-	[TimeEntryUserName] [nvarchar](50) NOT NULL,
 	[TimeEntryUserID] [int] NOT NULL,
  CONSTRAINT [PK_TimeEntry] PRIMARY KEY CLUSTERED 
 (
