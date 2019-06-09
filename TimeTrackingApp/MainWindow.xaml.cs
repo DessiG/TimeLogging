@@ -28,14 +28,14 @@ namespace TimeTrackingApp
         {
             var usersListForm = new UsersList();
             usersListForm.Show();
-            this.Close();
+           // this.Close();
         }
 
         private void TimeLoggingBtn_Click(object sender, RoutedEventArgs e)
         {
             var timeLoggingReport = new TimeLoggingReport();
             timeLoggingReport.Show();
-            this.Close();
+          //  this.Close();
         }
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)

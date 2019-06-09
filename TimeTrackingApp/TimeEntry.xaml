@@ -118,7 +118,7 @@
                 Margin="2.821,29.537,0,50.194"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                Text="{Binding TimeEntryUserID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                Text="{Binding ., NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
             <Button
                 Name="SaveBtn"
                 Grid.Row="5"

@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using TimeTrackingApp.Model;
 using System.Linq;
+using System;
 
 namespace TimeTrackingApp
 {
@@ -38,12 +39,14 @@ namespace TimeTrackingApp
             {
                 TimeEntryDuration = decimal.Parse(timeEntryDurationTextBox.Text),
                 TimeEntryDescription = timeEntryDescriptionTextBox.Text,
-                TimeEntryDate = System.DateTime.Now,
-                TimeEntryUserID = userId
+                TimeEntryDate = Convert.ToDateTime(timeEntryDateDatePicker.Text),
+                TimeEntryUserID = userId,
+                TimeEntryCreated = DateTime.Now
             };
 
             context.TimeEntries.Add(newTimeEntry);
             context.SaveChanges();
+            this.Close();
         }
     }
 }
