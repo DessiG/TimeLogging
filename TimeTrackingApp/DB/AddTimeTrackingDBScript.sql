@@ -249,7 +249,6 @@ INSERT INTO [dbo].[TimeEntry]
            ,[TimeEntryDuration]
            ,[TimeEntryDescription]
            ,[TimeEntryDate]
-           ,[TimeEntryUserName]
            ,[TimeEntryUserID])
      VALUES
            (GETDATE()
@@ -269,7 +268,6 @@ INSERT INTO [dbo].[TimeEntry]
            ,[TimeEntryDuration]
            ,[TimeEntryDescription]
            ,[TimeEntryDate]
-           ,[TimeEntryUserName]
            ,[TimeEntryUserID])
      VALUES
            (GETDATE()

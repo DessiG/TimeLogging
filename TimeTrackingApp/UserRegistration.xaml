@@ -57,27 +57,27 @@
                     <RowDefinition Height="40" />
                 </Grid.RowDefinitions>
                 <Label
-                    Grid.Row="0"
+                    Grid.Row="1"
                     Grid.Column="0"
                     Width="81"
                     Height="26"
-                    Margin="162,14.836,0,0"
+                    Margin="162,24,0,1"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     Content="User Name:"
                     RenderTransformOrigin="0.839,9.853" />
                 <TextBox
                     x:Name="userNameTextBox"
-                    Grid.Row="0"
+                    Grid.Row="1"
                     Grid.Column="1"
                     Width="196"
                     Height="23"
-                    Margin="39.418,17.836,-35.537,0"
+                    Margin="39,27,-23,1"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     Text="{Binding UserName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
                 <Label
-                    Grid.Row="1"
+                    Grid.Row="2"
                     Grid.Column="0"
                     Width="56"
                     Height="26"
@@ -87,7 +87,7 @@
                     Content="Phone:" />
                 <TextBox
                     x:Name="phoneTextBox"
-                    Grid.Row="1"
+                    Grid.Row="2"
                     Grid.Column="1"
                     Width="195"
                     Height="23"
@@ -96,29 +96,26 @@
                     VerticalAlignment="Center"
                     Text="{Binding Phone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
                 <Label
-                    Grid.Row="2"
-                    Grid.RowSpan="2"
+                    Grid.Row="3"
                     Grid.Column="0"
-                    Grid.ColumnSpan="2"
                     Width="81"
                     Height="26"
-                    Margin="163,28.269,0,47.463"
+                    Margin="164,25,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     Content="First Name:" />
                 <TextBox
                     x:Name="firstNameTextBox"
-                    Grid.Row="2"
-                    Grid.RowSpan="2"
+                    Grid.Row="3"
                     Grid.Column="1"
                     Width="193"
                     Height="23"
-                    Margin="42.418,28.269,-26.94,50.463"
+                    Margin="42,28,-22,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
                 <Label
-                    Grid.Row="3"
+                    Grid.Row="4"
                     Grid.Column="0"
                     Width="81"
                     Height="26"
@@ -128,7 +125,7 @@
                     Content="Last Name:" />
                 <TextBox
                     x:Name="lastNameTextBox"
-                    Grid.Row="3"
+                    Grid.Row="4"
                     Grid.Column="1"
                     Width="193"
                     Height="23"
@@ -138,7 +135,7 @@
                     RenderTransformOrigin="1.309,0.792"
                     Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
                 <Label
-                    Grid.Row="4"
+                    Grid.Row="5"
                     Grid.RowSpan="2"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
@@ -150,7 +147,7 @@
                     Content="Password:" />
                 <TextBox
                     x:Name="passwordTextBox"
-                    Grid.Row="4"
+                    Grid.Row="5"
                     Grid.RowSpan="2"
                     Grid.Column="1"
                     Width="195"
@@ -160,7 +157,7 @@
                     VerticalAlignment="Center"
                     Text="{Binding Password, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
                 <Label
-                    Grid.Row="5"
+                    Grid.Row="6"
                     Grid.Column="0"
                     Width="110"
                     Height="28"
@@ -171,7 +168,7 @@
                     RenderTransformOrigin="0.798,3.747" />
                 <TextBox
                     x:Name="verifyPasswordTextBox"
-                    Grid.Row="5"
+                    Grid.Row="6"
                     Grid.Column="1"
                     Width="195"
                     Height="24"
@@ -179,17 +176,17 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center" />
                 <Label
-                    Grid.Row="6"
+                    Grid.Row="7"
                     Grid.Column="0"
-                    Width="56"
+                    Width="52"
                     Height="31"
-                    Margin="187,9.672,0,0.164"
+                    Margin="194,10,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     Content="Email:" />
                 <TextBox
                     x:Name="emailTextBox"
-                    Grid.Row="6"
+                    Grid.Row="7"
                     Grid.Column="1"
                     Width="195"
                     Height="23"
@@ -198,7 +195,7 @@
                     VerticalAlignment="Bottom"
                     Text="{Binding Email, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
                 <Label
-                    Grid.Row="7"
+                    Grid.Row="8"
                     Grid.RowSpan="2"
                     Grid.Column="0"
                     Width="74"
@@ -210,7 +207,7 @@
 
                 <TextBox
                     x:Name="commentTextBox"
-                    Grid.Row="7"
+                    Grid.Row="8"
                     Grid.RowSpan="2"
                     Grid.Column="1"
                     Width="195"
