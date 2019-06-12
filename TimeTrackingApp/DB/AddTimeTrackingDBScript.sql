@@ -255,7 +255,6 @@ INSERT INTO [dbo].[TimeEntry]
            ,8
            ,'test 15'
            ,GETDATE() - 1
-           ,'admin'
            ,1)
 
 
@@ -274,7 +273,6 @@ INSERT INTO [dbo].[TimeEntry]
            ,8
            ,'test 16'
            ,GETDATE()
-           ,'admin'
            ,1)
 
 

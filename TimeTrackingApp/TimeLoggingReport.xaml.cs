@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using TimeTrackingApp.Model;
 using System.Data;
 using System.Data.Entity;
+using System.Collections.ObjectModel;
 
 namespace TimeTrackingApp
 {
@@ -30,10 +31,41 @@ namespace TimeTrackingApp
             DataContext = this;
         }
 
+        private class JoinClass {
+            public int TimeEntryId { get; set; }
+            public System.DateTime TimeEntryCreated { get; set; }
+            public decimal TimeEntryDuration { get; set; }
+            public string TimeEntryDescription { get; set; }
+            public DateTime? TimeEntryDate { get; set; }
+            public int TimeEntryUserID { get; set; }
+            public string TimeEntryUserName { get; set; }
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+
             context.TimeEntries.Load();
-            this.timeEntriesDataGrid.ItemsSource = context.TimeEntries.Local;
+            ObservableCollection<JoinClass> collection = new ObservableCollection<JoinClass>();
+
+          
+                      var query = from te in context.TimeEntries
+               join user in context.Users on te.TimeEntryUserID equals user.UserID
+                         select new JoinClass
+                         {
+                             TimeEntryCreated = te.TimeEntryCreated,
+                             TimeEntryDuration = te.TimeEntryDuration,
+                             TimeEntryDescription = te.TimeEntryDescription,
+                             TimeEntryDate = te.TimeEntryDate,
+                             TimeEntryUserName = user.UserName,
+                             TimeEntryUserID = user.UserID
+                         };
+            foreach (var item in query)
+            {
+                collection.Add(item);
+            }
+
+
+            this.timeEntriesDataGrid.ItemsSource = collection;
         }
 
 
