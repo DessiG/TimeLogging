@@ -10,11 +10,9 @@
     Height="600"
     Loaded="Window_Loaded"
     mc:Ignorable="d">
-    <Window.Resources>
-        <!--<CollectionViewSource x:Key="userTimeEntriesViewSource" Source="{Binding TimeEntries, Source={StaticResource userViewSource}}"/>-->
-    </Window.Resources>
     <Border Background="CadetBlue" CornerRadius="20">
         <Grid>
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="50" />
                 <RowDefinition Height="550" />
@@ -40,6 +38,29 @@
                 EnableRowVirtualization="True"
                 IsReadOnly="True"
                 RowDetailsVisibilityMode="VisibleWhenSelected">
+                <DataGrid.GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.ContainerStyle>
+                            <Style TargetType="{x:Type GroupItem}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type GroupItem}">
+                                            <!--  Provide UI Controls  -->
+                                            <StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding Name}" />
+                                                    <TextBlock Margin="30,0,0,0" Text="{Binding ItemCount, StringFormat=Count: {0}}" />
+                                                </StackPanel>
+                                                <ItemsPresenter />
+                                            </StackPanel>
+                                        </ControlTemplate>
+
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </GroupStyle.ContainerStyle>
+                    </GroupStyle>
+                </DataGrid.GroupStyle>
                 <DataGrid.Columns>
                     <DataGridTemplateColumn
                         x:Name="timeEntryCreatedColumn"
@@ -66,7 +87,7 @@
                         x:Name="timeEntryDescriptionColumn"
                         Width="90"
                         Binding="{Binding TimeEntryDescription}"
-                        Header="Description" />
+                        Header="Project" />
                     <DataGridTextColumn
                         x:Name="timeEntryDurationColumn"
                         Width="100"

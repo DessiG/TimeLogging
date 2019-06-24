@@ -15,6 +15,7 @@ using TimeTrackingApp.Model;
 using System.Data;
 using System.Data.Entity;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace TimeTrackingApp
 {
@@ -47,25 +48,28 @@ namespace TimeTrackingApp
             context.TimeEntries.Load();
             ObservableCollection<JoinClass> collection = new ObservableCollection<JoinClass>();
 
-          
-                      var query = from te in context.TimeEntries
-               join user in context.Users on te.TimeEntryUserID equals user.UserID
-                         select new JoinClass
-                         {
-                             TimeEntryCreated = te.TimeEntryCreated,
-                             TimeEntryDuration = te.TimeEntryDuration,
-                             TimeEntryDescription = te.TimeEntryDescription,
-                             TimeEntryDate = te.TimeEntryDate,
-                             TimeEntryUserName = user.UserName,
-                             TimeEntryUserID = user.UserID
-                         };
+
+            var query = from te in context.TimeEntries
+                        join user in context.Users on te.TimeEntryUserID equals user.UserID
+                        select new JoinClass
+                        {
+                            TimeEntryCreated = te.TimeEntryCreated,
+                            TimeEntryDuration = te.TimeEntryDuration,
+                            TimeEntryDescription = te.TimeEntryDescription,
+                            TimeEntryDate = te.TimeEntryDate,
+                            TimeEntryUserName = user.UserName,
+                            TimeEntryUserID = user.UserID
+                        };
+
             foreach (var item in query)
             {
                 collection.Add(item);
             }
+            //  collection.GroupBy(t => t.TimeEntryDescription);
+            ListCollectionView collectionView = new ListCollectionView(collection);
+            collectionView.GroupDescriptions.Add(new PropertyGroupDescription("TimeEntryDescription"));
 
-
-            this.timeEntriesDataGrid.ItemsSource = collection;
+            this.timeEntriesDataGrid.ItemsSource = collectionView;
         }
 
 

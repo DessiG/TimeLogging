@@ -70,7 +70,7 @@
                 Margin="140,20.269,0,1.597"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                Content="Time Entry Description:"
+                Content="Project Name:"
                 RenderTransformOrigin="1.558,0.704" />
             <TextBox
                 x:Name="timeEntryDescriptionTextBox"
